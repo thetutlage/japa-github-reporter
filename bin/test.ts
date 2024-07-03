@@ -1,4 +1,5 @@
 import { configure, processCLIArgs, run } from "@japa/runner";
+import stripAnsi from 'strip-ansi'
 import StackTracey from "stacktracey";
 import { expect } from "@japa/expect";
 
@@ -79,18 +80,18 @@ class MyCustomReporter extends BaseReporter {
             const stack = new StackTracey(error.error);
             const top = stack.items[0];
 
-            console.log(
+            console.log(`\n${
               formatMessage({
                 command: "error",
                 properties: {
-                  file: top.fileName,
+                  file: top.fileRelative,
                   line: String(top.line),
-                  column: String(top.column),
+                  col: String(top.column),
                   title: child.title,
                 },
-                message: error.error.message,
+                message: stripAnsi(error.error.message),
               })
-            );
+            }`);
           });
         }
 
@@ -109,7 +110,7 @@ class MyCustomReporter extends BaseReporter {
                     col: String(top.column),
                     title: test.title,
                   },
-                  message: error.error.message,
+                  message: stripAnsi(error.error.message),
                 })
               }`);
             });
