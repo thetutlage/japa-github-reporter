@@ -85,7 +85,7 @@ class MyCustomReporter extends BaseReporter {
                 properties: {
                   file: top.fileName,
                   line: String(top.line),
-                  col: String(top.column),
+                  column: String(top.column),
                   title: child.title,
                 },
                 message: error.error.message,
