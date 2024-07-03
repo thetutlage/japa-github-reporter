@@ -104,7 +104,7 @@ class MyCustomReporter extends BaseReporter {
                 formatMessage({
                   command: "error",
                   properties: {
-                    file: top.fileName,
+                    file: top.fileRelative,
                     line: String(top.line),
                     col: String(top.column),
                     title: test.title,
