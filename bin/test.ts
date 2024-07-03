@@ -100,7 +100,7 @@ class MyCustomReporter extends BaseReporter {
               const stack = new StackTracey(error.error);
               const top = stack.items[0];
 
-              console.log(
+              console.log(`\n${
                 formatMessage({
                   command: "error",
                   properties: {
@@ -111,7 +111,7 @@ class MyCustomReporter extends BaseReporter {
                   },
                   message: error.error.message,
                 })
-              );
+              }`);
             });
           });
         }
